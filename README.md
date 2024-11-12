@@ -1,2 +1,2 @@
 # Front-end-projects
-These projects beginner friendly and are made using only html , css and javascript .
+These projects are beginner friendly and are made by using only html , css and javascript .
