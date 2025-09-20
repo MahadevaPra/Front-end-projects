@@ -86,7 +86,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  function restartGame() {
+  function resetGame() {
     playerSetup.classList.remove("hidden");
     gameSection.classList.add("hidden");
     player1Input.value = "";
