@@ -1,57 +1,138 @@
+/* General page styling */
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Poppins', sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  height: 100vh;
-  background: #f4f4f4;
+  justify-content: flex-start;
+  min-height: 100vh;
+  margin: 0;
+  padding: 20px;
+  background: linear-gradient(135deg, #ff7eb3, #ff758c, #ff6a88, #ff99ac);
+  background-size: 400% 400%;
+  animation: gradientBG 8s ease infinite;
+  color: #fff;
 }
 
-h1 { color: #333; }
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
 
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+}
+
+/* Player form */
 #playerForm {
   margin-bottom: 20px;
+  text-align: center;
 }
 
+#playerForm input {
+  padding: 10px;
+  margin: 5px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+#playerForm button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  background: #ffcc70;
+  color: #333;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#playerForm button:hover {
+  background: #ffd88c;
+}
+
+/* Board styling */
 #board {
   display: grid;
-  grid-template-columns: repeat(3, 100px);
-  grid-template-rows: repeat(3, 100px);
-  gap: 5px;
+  grid-template-columns: repeat(3, minmax(80px, 100px));
+  grid-template-rows: repeat(3, minmax(80px, 100px));
+  gap: 8px;
   margin-top: 20px;
 }
 
 .cell {
-  width: 100px;
-  height: 100px;
-  background: white;
-  border: 2px solid #444;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+  border: 2px solid #fff;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2em;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #fff;
   cursor: pointer;
+  transition: transform 0.2s, background 0.3s;
 }
 
-.cell.taken { cursor: not-allowed; }
+.cell:hover {
+  background: rgba(255, 255, 255, 0.35);
+  transform: scale(1.05);
+}
 
+.cell.taken {
+  cursor: not-allowed;
+  opacity: 0.8;
+}
+
+/* Highlight winning cells */
+.cell.win {
+  background: #4caf50 !important;
+  color: #fff;
+  transform: scale(1.1);
+}
+
+/* Message & buttons */
 #message {
   margin-top: 20px;
-  font-size: 1.2em;
+  font-size: 1.4rem;
   font-weight: bold;
+  text-align: center;
 }
 
 #reset {
   margin-top: 15px;
-  padding: 10px 15px;
-  background: #333;
+  padding: 12px 20px;
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
   color: white;
   border: none;
+  border-radius: 25px;
+  font-size: 1rem;
   cursor: pointer;
   display: none;
+  transition: transform 0.2s, background 0.3s;
 }
 
 #reset:hover {
-  background: #555;
+  transform: scale(1.05);
+  background: linear-gradient(135deg, #8e2de2, #4a00e0);
+}
+
+/* Responsive layout */
+@media (max-width: 600px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  #board {
+    grid-template-columns: repeat(3, minmax(70px, 90px));
+    grid-template-rows: repeat(3, minmax(70px, 90px));
+  }
+
+  .cell {
+    font-size: 1.5rem;
+  }
 }
