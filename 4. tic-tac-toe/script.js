@@ -26,21 +26,6 @@ document.addEventListener("DOMContentLoaded", () => {
     [2, 4, 6],
   ];
 
-  function startGame() {
-    player1 = player1Input.value.trim() || "Player 1";
-    player2 = player2Input.value.trim() || "Player 2";
-    currentPlayer = "X";
-    board = ["", "", "", "", "", "", "", "", ""];
-    gameActive = true;
-    winnerDisplay.textContent = "";
-
-    playerSetup.classList.add("hidden");
-    gameSection.classList.remove("hidden");
-
-    turnInfo.textContent = `${player1}'s turn (X)`;
-    renderBoard();
-  }
-
   function renderBoard() {
     boardElement.innerHTML = "";
     board.forEach((cell, index) => {
@@ -93,7 +78,20 @@ document.addEventListener("DOMContentLoaded", () => {
     player2Input.value = "";
   }
 
-  startBtn.addEventListener("click", startGame);
+  startBtn.addEventListener("click", startGame() {
+    player1 = player1Input.value.trim() || "Player 1";
+    player2 = player2Input.value.trim() || "Player 2";
+    currentPlayer = "X";
+    board = ["", "", "", "", "", "", "", "", ""];
+    gameActive = true;
+    winnerDisplay.textContent = "";
+
+    playerSetup.classList.add("hidden");
+    gameSection.classList.remove("hidden");
+
+    turnInfo.textContent = `${player1}'s turn (X)`;
+    renderBoard();
+  });
   restartBtn.addEventListener("click", restartGame);
 });
 
